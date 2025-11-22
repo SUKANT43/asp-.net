@@ -18,10 +18,18 @@ List<GameDto> games = new List<GameDto>()
     new GameDto(10, "PUBG", "Battle Royale", 0.00m, new DateOnly(2017, 12, 20))
 };
 
+//Get /games
 app.MapGet("/games",()=>games);
 
-app.MapGet("/", () => "Hello Hey!");
-
-
+// GET /games/:id
+app.MapGet("games/{id}",(int id) =>
+{
+ var a=  games.Find(game=>game.Id==id);
+    if (a == null)
+    {
+        return Results.NotFound("there is no game on this ids");
+    }
+    return Results.Ok(a);
+});
 
 app.Run();
