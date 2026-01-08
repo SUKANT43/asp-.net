@@ -1,0 +1,3 @@
+dart code -> Maichine code and js for web
+statically typed language
+var name="hi"->it cant change to number
